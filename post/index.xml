@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 与浪之间</title>
+    <link>https://bobowa.github.io/post/</link>
+    <description>Recent content in Posts on 与浪之间</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Thu, 02 Jan 2020 20:44:16 +0800</lastBuildDate>
+    
+	<atom:link href="https://bobowa.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>装饰器</title>
+      <link>https://bobowa.github.io/post/%E8%A3%85%E9%A5%B0%E5%99%A8/</link>
+      <pubDate>Thu, 02 Jan 2020 20:44:16 +0800</pubDate>
+      
+      <guid>https://bobowa.github.io/post/%E8%A3%85%E9%A5%B0%E5%99%A8/</guid>
+      <description>我知道什么 面向切面编程
+不动原函数的情况下增加功能
+通过functools的wrap函数保证不影响原函数的调用
+实现原理是闭包？闭包是访问流浪作用域，这里应该是可以传递和返回函数吧。
+因为传递函数会导致函数属性__name__改变？为了保证不影响原函数的调用，所以要通过wrap来处理
+主要用途是加日志啊、统计函数运行时间啊、等等
+结构 重点 使用和原理
+目的 把函数传递给另一个函数，在另一个函数执行一定的操作后再执行传入的函数。可以用于打印日志、处理善后工作(关闭资源占用等)。好处在于可以把相同的代码抽象出来(打印日志)，或者把无关逻辑独立出来，让函数更加的紧凑，更加符合单一职责原则。装饰器实质的作用是在不动原来函数内容的情况下为函数添加新的功能，所以是把原来的函数做了一个操作然后覆盖原来的函数。所以 f = Dec(f)中的参数和结果都是f。 ##@wraps的作用 如果没有wraps那么，访问用了装饰器的函数名，函数的name参数就会变成装饰器中返回的函数的名字，而这不是我们想要的。
+手动修改的方法是，在装饰器函数中用self.name = fun.name把传入函数的名字赋值给返回的函数，然后采用wraps这个装饰器来实现这以通用功能。
+@wraps接受一个函数来进行装饰，并加入了复制函数名称、注释文档、参数列表等等的功能。这可以让我们在装饰器里面访问在装饰之前的函数的属性。 ##应用场景 ###授权(Authorization) 装饰器能有助于检查某个人是否被授权去使用一个web应用的端点(endpoint)。它们被大量使用于Flask和Django web框架中。
+说给小孩听 组织 图标 触类旁通 与闭包比较
+装饰器的作用 修改扩展原来函数功能的一种函数。
+在不改变原函数名的情况下，给函数增加新的功能。
+闭包 def print_msg():msg = &amp;quot;I&#39;m closure&amp;quot;def printer():print msgreturn printer 运行结果
+closure = print_msg()closure()I&#39;m closure 装饰器 带参数的装饰器 </description>
+    </item>
+    
+    <item>
+      <title>Markdown常用语法</title>
+      <link>https://bobowa.github.io/post/markdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Sat, 28 Dec 2019 23:12:49 +0800</pubDate>
+      
+      <guid>https://bobowa.github.io/post/markdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</guid>
+      <description>标题  #号越多标题级别越低、字号也越小。 建议采用1、3、5级别标题，因为二级标题和一级标题的区分度不高。  删除 &amp;lt;del&amp;gt;内容&amp;lt;/del&amp;gt;
+字体 斜体 *内容* 或者 _内容_ 这里是一个下划线
+粗体 **粗体** 或者 __粗体__ 这里是两个下划线
+段落 *** 或者 --- 推荐用后面的那个
+序号 无序 * 和 + 和 - 三个都可以
+有序 1.
+插入 超链接 [链接名称](链接地址)
+图片 &amp;lt;img src=&amp;quot;图片地址&amp;rdquo; width=&amp;quot;300&amp;rdquo; hegiht=&amp;quot;400&amp;rdquo; align=center /&amp;gt;
+表格 #空格
+&amp;amp;ensp 一个空格大小
+&amp;amp;emsp 两个空格大小
+&amp;amp;nbsp 不换行空格
+**注意：**后面都要加上分号才可以
+备注  #号和标题之间都要有空格 空行是作为当前格式结束的标识的。比如代码行缩进后如何写正常内容？只需要中间加个空行就行了 单独回车不能换行，会显示成类似空格的符号。要两个回车才可以。  </description>
+    </item>
+    
+    <item>
+      <title>Python面试题整理</title>
+      <link>https://bobowa.github.io/post/python%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/</link>
+      <pubDate>Sat, 28 Dec 2019 23:12:49 +0800</pubDate>
+      
+      <guid>https://bobowa.github.io/post/python%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/</guid>
+      <description>is和==的区别 判断常量时最好用is is是身份运算符，判断两个对象的内存id是否相等 ==是比较运算符，判断两个对象的值是否相等 进行值比较的时候使用==，判断是否是同一对象的时候使用is
+is和isinstance区别 是is绝对判断是不是实例，而isinstance是类的子类也会返回True
+拷贝 copy不会为子对象额外创建新的内存空间，当子对象被修改之后，这个子对象的引用都会发生改变； deepcopy是一个新对象的创建，只是用了和被拷贝对象相同的值，子对象改变不会影响被拷贝对象
+异常 列举 5 个 Python 中的异常类型以及其含义BaseException # 所有异常的基类 +&amp;ndash; SystemExit # 解释器请求退出 +&amp;ndash; KeyboardInterrupt # 用户中断执行(通常是输入^C) +&amp;ndash; GeneratorExit # 生成器(generator)发生异常来通知退出 +&amp;ndash; Exception # 常规异常的基类 +&amp;ndash; StopIteration # 迭代器没有更多的值 +&amp;ndash; StopAsyncIteration # 必须通过异步迭代器对象的__anext__()方法引发以停止迭代 +&amp;ndash; ArithmeticError # 各种算术错误引发的内置异常的基类 | +&amp;ndash; FloatingPointError # 浮点计算错误 | +&amp;ndash; OverflowError # 数值运算结果太大无法表示 | +&amp;ndash; ZeroDivisionError # 除(或取模)零 (所有数据类型) +&amp;ndash; AssertionError # 当assert语句失败时引发 +&amp;ndash; AttributeError # 属性引用或赋值失败 +&amp;ndash; BufferError # 无法执行与缓冲区相关的操作时引发 +&amp;ndash; EOFError # 当input()函数在没有读取任何数据的情况下达到文件结束条件(EOF)时引发 +&amp;ndash; ImportError # 导入模块/对象失败 | +&amp;ndash; ModuleNotFoundError # 无法找到模块或在在sys.</description>
+    </item>
+    
+    <item>
+      <title>优云</title>
+      <link>https://bobowa.github.io/post/%E4%BC%98%E4%BA%91/</link>
+      <pubDate>Thu, 01 Aug 2019 20:44:16 +0800</pubDate>
+      
+      <guid>https://bobowa.github.io/post/%E4%BC%98%E4%BA%91/</guid>
+      <description>运维就是可视化 平台的安装 OMP
+平台的使用 YYUN
+如果你是一个公司的运维，你会需要什么？
+有多少个设备，和设备的具体情况（多大内存，多大硬盘） Discovery后导入CMDB存储
+设备统一安装或者删除某个软件、修改某个参数，裸机安装 Automation
+设备使用情况，CPU温度有没有超过1000摄氏度哇之类的 Automation来巡检
+运维结果的直观展示 巡检操作的报表，数据库的可视化：Automation的总览，report的结果输出比如Linux、Windos、Aix的机器各有多少
+Ant采控平台 Agent
+平台的理解 </description>
+    </item>
+    
+    <item>
+      <title>Docker笔记</title>
+      <link>https://bobowa.github.io/post/docker%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 04 May 2018 20:44:16 +0800</pubDate>
+      
+      <guid>https://bobowa.github.io/post/docker%E7%AC%94%E8%AE%B0/</guid>
+      <description>分类 Docker CE 免费版 Docker EE 企业版 安全但付费
+安装 查看内核版本 Docker要求内核版本高于3.10
+通过uname -r或者uname -a查看当前内核版本
+更新一下yum源 sudo yum update
+##　移除旧版本（如果安装过的话）
+sudo yum remove docker \
+docker-client \
+docker-client-lastest \
+docker-common \
+docker-lastest \
+docker-lastest-logrotate \
+docker-logrotate \
+docker-selinux \
+docker-engine-selinux \
+docker-engine
+安装必要的工具 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+yum-utils提供yum-config-manager功能
+另外两个是devicemapper驱动依赖的？
+添加源信息 sudo yum-config-manager &amp;ndash;add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+更新yum缓存 sudo yum makecache fast
+安装docker sudo yum install -y docker-ce
+启动docker sudo systemctl start docker</description>
+    </item>
+    
+    <item>
+      <title>线程池</title>
+      <link>https://bobowa.github.io/post/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</link>
+      <pubDate>Fri, 04 May 2018 20:44:16 +0800</pubDate>
+      
+      <guid>https://bobowa.github.io/post/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</guid>
+      <description>在并发编程中，我们通常会用到一组非阻塞的模型：Future + Promise + Callback。
+Future:表示一个可能还没有实际完成的异步任务的结果。 Promise：交由任务执行者，任务执行者通过 Promise 可以标记任务完成或者失败。 Callback：针对Future表示的结果进行操作，以便在任务执行成功或失败后做出对应的操作。
+这一套模型是很多异步非阻塞架构的基础。
+线程池 线程的创建和销毁会消耗系统资源和时间。把线程创建好了等着，有需要就拿出去用，用完了就还回来。
+举例：在服务器上创建好可用的线程池，等待用户连接。用户请求时立即从线程池拿创建好的线程来处理请求，而不是接到请求后再去建线程。
+参考内存管理的内存池
+future future是concurrent.futures模块和asyncio模块的重要组件。
+从python3.4开始标准库中有两个名为Future的类concurrent.futures.Futureasyncio.Future。这两个类的作用相同：两个Future类的实例都表示可能完成或者尚未完成的延迟计算。与Twisted中的Deferred类、Tornado框架中的Future类的功能类似。
+通常情况下不应该自己创建future，而是由并发框架(concurrent.futures或asyncio)实例化。 因为future表示终将发生的事情，而确定某件事情会发生的唯一方式是执行的时间已经安排好，因此只有把某件事情交给concurrent.futures.Executor子类处理时，才能创建concurrent.futures.Future实例。如：Executor.submit()方法的参数是一个可调用的对象，调用这个方法后会为传入的可调用对象排定时间，并返回一个future。
+客户端代码不应该能改变future的状态，并发框架在future表示的延迟计算结束后会改变期物的状态，我们无法控制计算何时结束。
+这两种future都有.done()方法，这个方法不阻塞，返回值是布尔值，指明future链接的可调用对象是否已经执行。客户端代码通常不会询问future是否运行结束，而是会等待通知。因此两个Future类都有.add_done_callback()方法，这个方法只有一个参数，类型是可调用的对象，future运行结束后会调用指定的可调用对象。
+.result()方法是在两个Future类中的作用相同：返回可调用对象的结果，或者重新抛出执行可调用的对象时抛出的异常。但是如果future没有运行结束，result方法在两个Futrue类中的行为差别非常大。 对concurrent.futures.Future实例来说，调用.result()方法会阻塞调用方所在的线程，直到有结果可返回，此时，result方法可以接收可选的timeout参数，如果在指定的时间内future没有运行完毕，会抛出TimeoutError异常。而asyncio.Future.result方法不支持设定超时时间，在获取future结果最好使用yield from结构，但是concurrent.futures.Future不能这样做
+用Featurn创建进程池 concurrent.futures中的ProcessPoolExecutor类把工作分配给多个Python进程处理。因此，如果需要做CPU密集型处理，使用这个模块能绕开GIL，利用所有的CPU核心。
+其原理是一个ProcessPoolExecutor创建了N个独立的Python解释器。N是系统上面可用的CPU核数。 使用方法和ThreadPoolExecutor方法一样 。
+如果是4核的CPU，但是我N写了6，会怎么样？
+用Featurn创建线程池 Python代码是无法控制GIL，标准库中所有执行阻塞型IO操作的函数，在等待操作系统返回结果时都会释放GIL.运行其他线程执行，也正是因为这样，Python线程可以在IO密集型应用中发挥作用。
+实例代码 from concurrent.futures import ThreadPoolExecutor import time def get_html(times): # 参数times用来模拟网络请求的时间 time.sleep(times) print “get page {}s finished”.format(times) return times executor = ThreadPoolExecutor(max_works=2)task1 = executor.submit(get_html, (3)) # 通过submit()提交执行函数到线程池中task2 = executor.submit(get_html, (2)) # submit()非阻塞立即返回 返回一个future对象print task1.done() # done用于判断执行函数是否完成print task2.</description>
+    </item>
+    
+    <item>
+      <title>用hugo创建静态个人博客</title>
+      <link>https://bobowa.github.io/post/%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Tue, 02 Jan 2018 20:44:16 +0800</pubDate>
+      
+      <guid>https://bobowa.github.io/post/%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>环境简介 系统：Windows10
+管理工具：Git
+托管地址：github，需要github账号
+安装 点击下载
+环境变量 点击查看教程
+查看版本 C:\Hugo&amp;gt;hugo versionHugo Static Site Generator v0.62.0-6608F155 windows/amd64 BuildDate: 2019-12-23T10:26:18Z` 创建网站 在当前文件夹下创建名为blog的文件夹
+C:\Hugo&amp;gt;hugo new site blogCongratulations! Your new Hugo site is created in C:\Users\wbb\Documents\GitHub\hugo\blog.Just a few more steps and you&#39;re ready to go:1. Download a theme into the same-named folder.Choose a theme from https://themes.gohugo.io/ orcreate your own with the &amp;quot;hugo new theme &amp;lt;THEMENAME&amp;gt;&amp;quot; command.2. Perhaps you want to add some content.</description>
+    </item>
+    
+    <item>
+      <title>First</title>
+      <link>https://bobowa.github.io/post/first/</link>
+      <pubDate>Mon, 02 Jan 2017 20:44:16 +0800</pubDate>
+      
+      <guid>https://bobowa.github.io/post/first/</guid>
+      <description>hello world ! </description>
+    </item>
+    
+  </channel>
+</rss>

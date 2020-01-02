@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-hans">
+  <head>
+    <title>Docker笔记 // 与浪之间</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.62.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://bobowa.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Docker笔记"/>
+<meta name="twitter:description" content="分类 Docker CE 免费版 Docker EE 企业版 安全但付费
+安装 查看内核版本 Docker要求内核版本高于3.10
+通过uname -r或者uname -a查看当前内核版本
+更新一下yum源 sudo yum update
+##　移除旧版本（如果安装过的话）
+sudo yum remove docker \
+docker-client \
+docker-client-lastest \
+docker-common \
+docker-lastest \
+docker-lastest-logrotate \
+docker-logrotate \
+docker-selinux \
+docker-engine-selinux \
+docker-engine
+安装必要的工具 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+yum-utils提供yum-config-manager功能
+另外两个是devicemapper驱动依赖的？
+添加源信息 sudo yum-config-manager &ndash;add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+更新yum缓存 sudo yum makecache fast
+安装docker sudo yum install -y docker-ce
+启动docker sudo systemctl start docker"/>
+
+    <meta property="og:title" content="Docker笔记" />
+<meta property="og:description" content="分类 Docker CE 免费版 Docker EE 企业版 安全但付费
+安装 查看内核版本 Docker要求内核版本高于3.10
+通过uname -r或者uname -a查看当前内核版本
+更新一下yum源 sudo yum update
+##　移除旧版本（如果安装过的话）
+sudo yum remove docker \
+docker-client \
+docker-client-lastest \
+docker-common \
+docker-lastest \
+docker-lastest-logrotate \
+docker-logrotate \
+docker-selinux \
+docker-engine-selinux \
+docker-engine
+安装必要的工具 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+yum-utils提供yum-config-manager功能
+另外两个是devicemapper驱动依赖的？
+添加源信息 sudo yum-config-manager &ndash;add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+更新yum缓存 sudo yum makecache fast
+安装docker sudo yum install -y docker-ce
+启动docker sudo systemctl start docker" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bobowa.github.io/post/docker%E7%AC%94%E8%AE%B0/" />
+<meta property="article:published_time" content="2018-05-04T20:44:16+08:00" />
+<meta property="article:modified_time" content="2018-05-04T20:44:16+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://bobowa.github.io/"><img class="app-header-avatar" src="http://wx3.sinaimg.cn/large/006ML2Boly1g4o56elnswj30w20w2thy.jpg" alt="John Doe" /></a>
+      <h1>与浪之间</h1>
+      <p>狗子最好看啦~~~</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/bobowa/" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://music.163.com/#/user/home?id=483576762" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-music">
+  <title>music</title>
+  <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Docker笔记</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          May 4, 2018
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h1 id="heading">分类</h1>
+<p>Docker CE 免费版
+Docker EE 企业版 安全但付费</p>
+<h1 id="heading-1">安装</h1>
+<h2 id="heading-2">查看内核版本</h2>
+<p>Docker要求内核版本高于3.10</p>
+<p>通过uname -r或者uname -a查看当前内核版本</p>
+<h2 id="yum">更新一下yum源</h2>
+<p>sudo yum update</p>
+<p>##　移除旧版本（如果安装过的话）</p>
+<p>sudo yum remove docker \<br>
+docker-client \<br>
+docker-client-lastest \<br>
+docker-common \<br>
+docker-lastest \<br>
+docker-lastest-logrotate \<br>
+docker-logrotate \<br>
+docker-selinux \<br>
+docker-engine-selinux \<br>
+docker-engine</p>
+<h2 id="heading-3">安装必要的工具</h2>
+<p>sudo yum install -y yum-utils device-mapper-persistent-data lvm2</p>
+<p>yum-utils提供yum-config-manager功能</p>
+<p>另外两个是devicemapper驱动依赖的？</p>
+<h2 id="heading-4">添加源信息</h2>
+<p>sudo yum-config-manager &ndash;add-repo <a href="http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo">http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</a></p>
+<h2 id="yum-1">更新yum缓存</h2>
+<p>sudo yum makecache fast</p>
+<h2 id="docker">安装docker</h2>
+<p>sudo yum install -y docker-ce</p>
+<h2 id="docker-1">启动docker</h2>
+<p>sudo systemctl start docker</p>
+<h2 id="heading-5">加入开机选项</h2>
+<p>sudo systemctl enable docker</p>
+<h2 id="heading-6">严重安装是否成功</h2>
+<p>docker version</p>
+<h2 id="hello-world">测试运行hello-world</h2>
+<p>docker run hello-world</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

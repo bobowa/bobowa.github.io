@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="zh-hans">
+  <head>
+    <title>Python面试题整理 // 与浪之间</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.62.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://bobowa.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python面试题整理"/>
+<meta name="twitter:description" content="is和==的区别 判断常量时最好用is is是身份运算符，判断两个对象的内存id是否相等 ==是比较运算符，判断两个对象的值是否相等 进行值比较的时候使用==，判断是否是同一对象的时候使用is
+is和isinstance区别 是is绝对判断是不是实例，而isinstance是类的子类也会返回True
+拷贝 copy不会为子对象额外创建新的内存空间，当子对象被修改之后，这个子对象的引用都会发生改变； deepcopy是一个新对象的创建，只是用了和被拷贝对象相同的值，子对象改变不会影响被拷贝对象
+异常 列举 5 个 Python 中的异常类型以及其含义BaseException # 所有异常的基类 &#43;&ndash; SystemExit # 解释器请求退出 &#43;&ndash; KeyboardInterrupt # 用户中断执行(通常是输入^C) &#43;&ndash; GeneratorExit # 生成器(generator)发生异常来通知退出 &#43;&ndash; Exception # 常规异常的基类 &#43;&ndash; StopIteration # 迭代器没有更多的值 &#43;&ndash; StopAsyncIteration # 必须通过异步迭代器对象的__anext__()方法引发以停止迭代 &#43;&ndash; ArithmeticError # 各种算术错误引发的内置异常的基类 | &#43;&ndash; FloatingPointError # 浮点计算错误 | &#43;&ndash; OverflowError # 数值运算结果太大无法表示 | &#43;&ndash; ZeroDivisionError # 除(或取模)零 (所有数据类型) &#43;&ndash; AssertionError # 当assert语句失败时引发 &#43;&ndash; AttributeError # 属性引用或赋值失败 &#43;&ndash; BufferError # 无法执行与缓冲区相关的操作时引发 &#43;&ndash; EOFError # 当input()函数在没有读取任何数据的情况下达到文件结束条件(EOF)时引发 &#43;&ndash; ImportError # 导入模块/对象失败 | &#43;&ndash; ModuleNotFoundError # 无法找到模块或在在sys."/>
+
+    <meta property="og:title" content="Python面试题整理" />
+<meta property="og:description" content="is和==的区别 判断常量时最好用is is是身份运算符，判断两个对象的内存id是否相等 ==是比较运算符，判断两个对象的值是否相等 进行值比较的时候使用==，判断是否是同一对象的时候使用is
+is和isinstance区别 是is绝对判断是不是实例，而isinstance是类的子类也会返回True
+拷贝 copy不会为子对象额外创建新的内存空间，当子对象被修改之后，这个子对象的引用都会发生改变； deepcopy是一个新对象的创建，只是用了和被拷贝对象相同的值，子对象改变不会影响被拷贝对象
+异常 列举 5 个 Python 中的异常类型以及其含义BaseException # 所有异常的基类 &#43;&ndash; SystemExit # 解释器请求退出 &#43;&ndash; KeyboardInterrupt # 用户中断执行(通常是输入^C) &#43;&ndash; GeneratorExit # 生成器(generator)发生异常来通知退出 &#43;&ndash; Exception # 常规异常的基类 &#43;&ndash; StopIteration # 迭代器没有更多的值 &#43;&ndash; StopAsyncIteration # 必须通过异步迭代器对象的__anext__()方法引发以停止迭代 &#43;&ndash; ArithmeticError # 各种算术错误引发的内置异常的基类 | &#43;&ndash; FloatingPointError # 浮点计算错误 | &#43;&ndash; OverflowError # 数值运算结果太大无法表示 | &#43;&ndash; ZeroDivisionError # 除(或取模)零 (所有数据类型) &#43;&ndash; AssertionError # 当assert语句失败时引发 &#43;&ndash; AttributeError # 属性引用或赋值失败 &#43;&ndash; BufferError # 无法执行与缓冲区相关的操作时引发 &#43;&ndash; EOFError # 当input()函数在没有读取任何数据的情况下达到文件结束条件(EOF)时引发 &#43;&ndash; ImportError # 导入模块/对象失败 | &#43;&ndash; ModuleNotFoundError # 无法找到模块或在在sys." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bobowa.github.io/post/python%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/" />
+<meta property="article:published_time" content="2019-12-28T23:12:49+08:00" />
+<meta property="article:modified_time" content="2019-12-28T23:12:49+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://bobowa.github.io/"><img class="app-header-avatar" src="http://wx3.sinaimg.cn/large/006ML2Boly1g4o56elnswj30w20w2thy.jpg" alt="John Doe" /></a>
+      <h1>与浪之间</h1>
+      <p>狗子最好看啦~~~</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/bobowa/" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://music.163.com/#/user/home?id=483576762" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-music">
+  <title>music</title>
+  <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Python面试题整理</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Dec 28, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          5 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h1 id="is">is和==的区别</h1>
+<p>判断常量时最好用is
+is是身份运算符，判断两个对象的内存id是否相等
+==是比较运算符，判断两个对象的值是否相等
+进行值比较的时候使用==，判断是否是同一对象的时候使用is</p>
+<h1 id="isisinstance">is和isinstance区别</h1>
+<p>是is绝对判断是不是实例，而isinstance是类的子类也会返回True</p>
+<h1 id="heading">拷贝</h1>
+<p>copy不会为子对象额外创建新的内存空间，当子对象被修改之后，这个子对象的引用都会发生改变；
+deepcopy是一个新对象的创建，只是用了和被拷贝对象相同的值，子对象改变不会影响被拷贝对象</p>
+<h1 id="heading-1">异常</h1>
+<p>列举 5 个 Python 中的异常类型以及其含义BaseException  # 所有异常的基类
++&ndash; SystemExit  # 解释器请求退出
++&ndash; KeyboardInterrupt  # 用户中断执行(通常是输入^C)
++&ndash; GeneratorExit  # 生成器(generator)发生异常来通知退出
++&ndash; Exception  # 常规异常的基类
++&ndash; StopIteration  # 迭代器没有更多的值
++&ndash; StopAsyncIteration  # 必须通过异步迭代器对象的__anext__()方法引发以停止迭代
++&ndash; ArithmeticError  # 各种算术错误引发的内置异常的基类
+|    +&ndash; FloatingPointError  # 浮点计算错误
+|    +&ndash; OverflowError  # 数值运算结果太大无法表示
+|    +&ndash; ZeroDivisionError  # 除(或取模)零 (所有数据类型)
++&ndash; AssertionError  # 当assert语句失败时引发
++&ndash; AttributeError  # 属性引用或赋值失败
++&ndash; BufferError  # 无法执行与缓冲区相关的操作时引发
++&ndash; EOFError  # 当input()函数在没有读取任何数据的情况下达到文件结束条件(EOF)时引发
++&ndash; ImportError  # 导入模块/对象失败
+|    +&ndash; ModuleNotFoundError  # 无法找到模块或在在sys.modules中找到None
++&ndash; LookupError  # 映射或序列上使用的键或索引无效时引发的异常的基类
+|    +&ndash; IndexError  # 序列中没有此索引(index)
+|    +&ndash; KeyError  # 映射中没有这个键
++&ndash; MemoryError  # 内存溢出错误(对于Python 解释器不是致命的)
++&ndash; NameError  # 未声明/初始化对象 (没有属性)
+|    +&ndash; UnboundLocalError  # 访问未初始化的本地变量
++&ndash; OSError  # 操作系统错误，EnvironmentError，IOError，WindowsError，socket.error，select.error和mmap.error已合并到OSError中，构造函数可能返回子类
+|    +&ndash; BlockingIOError  # 操作将阻塞对象(e.g. socket)设置为非阻塞操作
+|    +&ndash; ChildProcessError  # 在子进程上的操作失败
+|    +&ndash; ConnectionError  # 与连接相关的异常的基类
+|    |    +&ndash; BrokenPipeError  # 另一端关闭时尝试写入管道或试图在已关闭写入的套接字上写入
+|    |    +&ndash; ConnectionAbortedError  # 连接尝试被对等方中止
+|    |    +&ndash; ConnectionRefusedError  # 连接尝试被对等方拒绝
+|    |    +&ndash; ConnectionResetError    # 连接由对等方重置
+|    +&ndash; FileExistsError  # 创建已存在的文件或目录
+|    +&ndash; FileNotFoundError  # 请求不存在的文件或目录
+|    +&ndash; InterruptedError  # 系统调用被输入信号中断
+|    +&ndash; IsADirectoryError  # 在目录上请求文件操作(例如 os.remove())
+|    +&ndash; NotADirectoryError  # 在不是目录的事物上请求目录操作(例如 os.listdir())
+|    +&ndash; PermissionError  # 尝试在没有足够访问权限的情况下运行操作
+|    +&ndash; ProcessLookupError  # 给定进程不存在
+|    +&ndash; TimeoutError  # 系统函数在系统级别超时
++&ndash; ReferenceError  # weakref.proxy()函数创建的弱引用试图访问已经垃圾回收了的对象
++&ndash; RuntimeError  # 在检测到不属于任何其他类别的错误时触发
+|    +&ndash; NotImplementedError  # 在用户定义的基类中，抽象方法要求派生类重写该方法或者正在开发的类指示仍然需要添加实际实现
+|    +&ndash; RecursionError  # 解释器检测到超出最大递归深度
++&ndash; SyntaxError  # Python 语法错误
+|    +&ndash; IndentationError  # 缩进错误
+|         +&ndash; TabError  # Tab和空格混用
++&ndash; SystemError  # 解释器发现内部错误
++&ndash; TypeError  # 操作或函数应用于不适当类型的对象
++&ndash; ValueError  # 操作或函数接收到具有正确类型但值不合适的参数
+|    +&ndash; UnicodeError  # 发生与Unicode相关的编码或解码错误
+|         +&ndash; UnicodeDecodeError  # Unicode解码错误
+|         +&ndash; UnicodeEncodeError  # Unicode编码错误
+|         +&ndash; UnicodeTranslateError  # Unicode转码错误
++&ndash; Warning  # 警告的基类
++&ndash; DeprecationWarning  # 有关已弃用功能的警告的基类
++&ndash; PendingDeprecationWarning  # 有关不推荐使用功能的警告的基类
++&ndash; RuntimeWarning  # 有关可疑的运行时行为的警告的基类
++&ndash; SyntaxWarning  # 关于可疑语法警告的基类
++&ndash; UserWarning  # 用户代码生成警告的基类
++&ndash; FutureWarning  # 有关已弃用功能的警告的基类
++&ndash; ImportWarning  # 关于模块导入时可能出错的警告的基类
++&ndash; UnicodeWarning  # 与Unicode相关的警告的基类
++&ndash; BytesWarning  # 与bytes和bytearray相关的警告的基类
++&ndash; ResourceWarning  # 与资源使用相关的警告的基类。被默认警告过滤器忽略。</p>
+<h1 id="heading-2">切片</h1>
+<p>利用切片操作，实现一个trim()函数，去除字符串首尾的空格，注意不要调用str的strip()方法.</p>
+<p>方法1：</p>
+<pre><code>def trim(s):    
+    while s[:1] == ' ':
+        s = s[1:]
+    while s[-1:] == ' ':
+        s = s[:-1]
+    return s
+</code></pre>
+<p>方法2：</p>
+<pre><code>def trim(s):
+    if s[:1] == ' ':
+        s = trim(s[1:])
+    if s[-1:] == ' ':
+        s = trim(s[:-1])
+    return s
+</code></pre>
+<p>方法3：</p>
+<pre><code>def trim(s):
+    while s[0] == ' ':
+        s = s[1:]
+    while s[-1] == ' ':
+        s = s[:-1]
+    return s
+</code></pre>
+<p>方法1和2都正确。2采用的是递归方法。<br>
+方法3错误，主要是没考虑传入空字符串的可能。（一定要校验输入！！！）。
+如果输入空字符串，那么方法3就报错了。''[0]报错，而&rsquo;'[:1]不报错，可能因为前者是要求拿出来指定下标，但是没有。而后者只是拿出第一个元素，没有也不会报错。</p>
+<p>改进：<br>
+可以采用isalpha()函数来校验输入是否为合法字符串<br>
+<code>&gt;&gt;&gt; ''.isalpha()</code><br>
+<code>False</code></p>
+<h1 id="heading-3">设计通用计时装饰器</h1>
+<pre><code>import time, functools
+def metric(fn):
+    @functools.wraps(fn)
+    def wrapper(*arg, *kw):
+        time0 = time.time()
+        ret = fn(*args, *kw)   # 函数在这里被执行
+        time1 = time.time()
+        print '%s executed in %s ms' % (fn.__name__, time1-time0))
+        return ret
+    return wrapper
+</code></pre>
+<p>这里为什么装饰器要写2层嵌套函数，里层函数完全就已经实现了装饰的功能为什么不直接用里层函数名作为装饰器名称？</p>
+<p>答：装饰器是要把原来的函数装饰成新的函数，并且返回这个函数本身的高阶函数。所以需要有@functools.wraps(fn)，至于为什么有多一层函数，为了执行这个装饰器？</p>
+<h1 id="gil">多线程限制GIL</h1>
+<p>一个进程一个解释器？一个解释器同时间内只能有一个线程使用，是并发，不是并行。类似单CPU跑多个程序。</p>
+<h1 id="heading-4">多进程</h1>
+<p>多进程间共享数据，可以使用 multiprocessing.Value 和 multiprocessing.Array</p>
+<h1 id="list">删除list中的重复元素</h1>
+<p>方法1：</p>
+<pre><code>&gt;&gt;&gt; s = [1,2,3,4,3,2]
+&gt;&gt;&gt; s = set(s)
+&gt;&gt;&gt; s = list[s]
+&gt;&gt;&gt; s
+[1,2,3,4]
+</code></pre>
+<p>方法2：</p>
+<pre><code>d = {}
+for i in s:
+    d[i] = 1
+list(d.keys()) 
+</code></pre>
+<p>这两种方法本质上是一样的，都是利用字典键值必须唯一的特性来去重。因为字段要根据键计算值存储的位置，所以键值必须唯一，不能重复。</p>
+<h1 id="maplist">利用map把list内容首字母大写</h1>
+<pre><code>def myupper(words):
+    if not words.isalpha():
+        return &quot;error input, please check!&quot;
+    word_list = words.split()
+    result_list = []
+    for each in word_list:
+        if each[:1].islower():
+            each = each[:1].upper() + each[1:].lower()
+            result_list.appnend(each)
+    return result_list.join(' ')
+map(['wang bo', 'Wuqi fan', 'DOu Dou'])
+</code></pre>
+<p>妈的被完虐啊</p>
+<pre><code>def normalize(name):
+    return name[0].upper()+name[1:].lower()   # 这里只要加了isalpha就不用考虑''的情况了
+
+def normalizeList(inputlist):
+    return list(map(normalize, inputlist))
+</code></pre>
+<p>map会返回元组！其他的应该也是吧</p>
+<h1 id="python">Python如何进行内存管理</h1>
+<h2 id="heading-5">申请</h2>
+<p>内存池，小的对象（小于256bits）就直接从内存池申请内存，释放后也是交还内存池，可以提高效率和防止内存碎片(外部内存碎片)。 对于比较大的内存从系统申请。</p>
+<h2 id="heading-6">释放</h2>
+<p>引用计数为0时，调用析构函数。</p>
+<h1 id="heading-7">元类</h1>
+<p>类中类，如何创建一个类</p>
+<h1 id="heading-8">单例</h1>
+<h1 id="python-1">python优缺点</h1>
+<h2 id="heading-9">优点</h2>
+<p>语法简单、第三方包多、有异常处理机制、跨平台、
+动态、面向对象</p>
+<h2 id="heading-10">缺点</h2>
+<p>速度较慢、2和3不兼容、代码不能加密</p>
+<h1 id="heading-11">深浅拷贝区别</h1>
+<p>浅拷贝只拷贝第一层元素，比如含有可变元素的话，只会拷贝可变元素的地址，而不拷贝地址内的东西。大多数都是浅拷贝，高效。半共享
+深拷贝，会拷贝到都时不可变元素为止，如果有list还会把list中的内容拷贝出来一份。完全独立！不影响原对象。</p>
+<p>copy.deepcopy()</p>
+<h1 id="heading-12">闭包</h1>
+<p>访问“流浪”作用域的功能。在子函数中访问外部变量，外部函数的运行已经结束，但是变量存储到了子函数中。</p>
+<h1 id="list-1">就地打乱list</h1>
+<pre><code>from random import shuffle
+shuffle(mylist)
+mylist
+</code></pre>
+<h1 id="flask">flask</h1>
+<p>Flask是Python编写的一款轻量级Web应用框架。其 WSGI 工具箱采用 Werkzeug ，模板引擎则使用 Jinja2。其中两个环境依赖是Werkzeug和jinja2，这意味着它不需要依赖外部库。正因如此，我们将其称为轻量级框架。</p>
+<h1 id="tornado">tornado的核心</h1>
+<p>Tornado 的核心是 ioloop 和 iostream 这两个模块，前者提供了一个高效的 I/O 事件循环，后者则封装了 一个无阻塞的 socket 。通过向 ioloop 中添加网络 I/O 事件，利用无阻塞的 socket ，再搭配相应的回调函数，便可达到梦寐以求的高效异步执行。</p>
+<h1 id="heading-13">反向代理</h1>
+<p>正向代理，客户访问的服务器是由客户指定的。正向代理类似于你找对女朋友说“我要冰箱里那头昨天我买的牦牛”，然后你女朋友给给你拿过来了。反向代理是你对女朋友说“我要牦牛”，然后去那里搞到牦牛是女朋友决定的，可能是找藏民们买一个，也可能是自己生一个，也可能是找泥人张给你吹一个，再把你家的猫毛粘在上面。总之，给你牦牛就行了，怎么来的你别管。</p>
+<p>对应到编程上就是可以通过反向代理实现负载均衡，把请求平均分配给服务器，而不是指着一个嚯嚯。但有个问题就是seeion的维护</p>
+<h1 id="heading-14">生成器和迭代器</h1>
+<p>yeild</p>
+<h1 id="heading-15">排序算法</h1>
+<h1 id="heading-16">装饰器</h1>
+<h1 id="with">with</h1>
+<p>with语句：“上下文管理器”，用于资源访问的场合，作用是资源释放和异常处理（详细内容在第3条问题汇总）import threading</p>
+<p>来一个用于线程锁的with使用
+num = 0  # 全局变量多个线程可以读写，传递数据
+thread_lock = threading.Lock()  # 创建一个锁</p>
+<p>class Mythread(threading.Thread):
+def run(self):
+global num
+with thread_lock:               # with Lock的作用相当于自动获取和释放锁(资源)
+for i in range(1000000):    # 锁定期间，其他线程不可以运行
+num += 1
+print(num)</p>
+<h1 id="heading-17">数据库范式</h1>
+<p>了解数据库的三范式么？通俗解释属性不可分割：字段不能再分割，如“年级班级”可以分割为“年级”和“班级”两个字段唯一主键：一张表中需要有一个唯一主键用来区分每行数据，如“学生学号 ”消除冗余和传递依赖：不同表中不能存在重复的字段数据，如“学生”表中的“院系”字段和“班级”表中“院系”字段，我们可以关联两张表的字段而无需在“学生”表中再加一个“院系”。</p>
+<h1 id="heading-18">如何区别可变数据类型和不可变数据类型</h1>
+<p>可变数据类型：在内存id不变的情况下，数据的值可以改变</p>
+<p>不可变数据类型：数据的值不能发生改变，如果值发生改变，那么内存id也会改变，这样就不是同一个数据了</p>
+<h1 id="heading-19">自定义异常</h1>
+<pre><code># coding:utf-8
+
+def judge_value(num_value):
+    &quot;&quot;&quot;自定义异常函数 自定义异常函数，用于抛出大于一定值的异常
+       :param num_value:用于判断的值
+       :return:异常信息
+    &quot;&quot;&quot;
+    if num_value &gt; 10:
+        # raise用于抛出自定义异常，格式为：raise 异常类型(异常注明)
+        # 一旦触发则不再执行raise之后的代码
+        raise ValueError(&quot;数量不能大于10&quot;)
+    else:
+        return &quot;200&quot;
+</code></pre>
+<p>if <strong>name</strong> == &lsquo;<strong>main</strong>':
+judge_value(10)</p>
+<h1 id="heading-20">我们知道对于列表可以使用切片操作进行部分元素的选择，那么如何对生成器类型的对象实现相同的功能呢？</h1>
+<p>#!/usr/bin/python3
+import itertools</p>
+<p>def fbnq(num):
+&ldquo;&ldquo;&ldquo;斐波那契生成器</p>
+<pre><code>:param num: 生产数量
+:return: 斐波那契迭代器
+&quot;&quot;&quot;
+a, b = 1, 1
+for _ in range(num):
+    a, b = b, a+b
+    yield a
+</code></pre>
+<p>if <strong>name</strong> == &lsquo;<strong>main</strong>':
+gener = fbnq(20)
+print(gener)
+# 不能直接对生成器和迭代器进行切片
+# print(fbnq(20)[2])
+# 可以使用itertools.islice()对迭代器进行切片
+# itertools是一个很强大的内置模块，有需要可以了解一下
+gener_clip = itertools.islice(gener, 10, 20)
+for i in gener_clip:
+print(i)</p>
+<h1 id="http">HTTP状态码</h1>
+<h1 id="postget">post和get区别</h1>
+<h1 id="mysql">mysql引擎</h1>
+<p>主要 MyISAM 与 InnoDB 两个引擎，其主要区别如下：</p>
+<p>一、InnoDB 支持事务，MyISAM 不支持，这一点是非常之重要。事务是一种高</p>
+<p>级的处理方式，如在一些列增删改中只要哪个出错还可以回滚还原，而 MyISAM</p>
+<p>就不可以了；</p>
+<p>二、MyISAM 适合查询以及插入为主的应用，InnoDB 适合频繁修改以及涉及到</p>
+<p>安全性较高的应用；</p>
+<p>三、InnoDB 支持外键，MyISAM 不支持；</p>
+<p>四、MyISAM 是默认引擎，InnoDB 需要指定；</p>
+<h1 id="heading-21">数据库的优化？</h1>
+<ol>
+<li>
+<p>优化索引、SQL 语句、分析慢查询；</p>
+</li>
+<li>
+<p>设计表的时候严格根据数据库的设计范式来设计数据库；</p>
+</li>
+<li>
+<p>使用缓存，把经常访问到的数据而且不需要经常变化的数据放在缓存中，能</p>
+</li>
+</ol>
+<p>节约磁盘IO；</p>
+<ol start="4">
+<li>
+<p>优化硬件；采用SSD，使用磁盘队列技术(RAID0,RAID1,RDID5)等；</p>
+</li>
+<li>
+<p>垂直分表；把一些不经常读的数据放在一张表里，节约磁盘I/O；</p>
+</li>
+<li>
+<p>主从分离读写；采用主从复制把数据库的读操作和写入操作分离开来；</p>
+</li>
+<li>
+<p>不采用全文索引；</p>
+</li>
+<li>
+<p>采用更快的存储方式，例如 NoSQL存储经常访问的数据</p>
+</li>
+</ol>
+<h1 id="django">django跨域问题</h1>
+<ul>
+<li>启用中间件</li>
+<li>post请求</li>
+<li>验证码</li>
+<li>表单中添加{%csrf_token%}标签</li>
+</ul>
+<h2 id="django-1">你对Django的认识？</h2>
+<p>对于Django框架遵循MVC设计，并且有一个专有名词：MVT</p>
+<p>M全拼为Model，与MVC中的M功能相同，负责数据处理，内嵌了ORM框架</p>
+<p>V全拼为View，与MVC中的C功能相同，接收HttpRequest，业务处理，返回HttpResponse</p>
+<p>T全拼为Template，与MVC中的V功能相同，负责封装构造要返回的html，内嵌了模板引擎</p>
+<p>Django是走大而全的方向，它最出名的是其全自动化的管理后台：只需要使用起ORM，做简单的对象定义，它就能自动生成数据库结构、以及全功能的管理后台。</p>
+<p>Django内置的ORM跟框架内的其他模块耦合程度高。</p>
+<p>应用程序必须使用Django内置的ORM，否则就不能享受到框架内提供的种种基于其ORM的便利；理论上可以切换掉其ORM模块，但这就相当于要把装修完毕的房子拆除重新装修，倒不如一开始就去毛胚房做全新的装修。</p>
+<p>Django的卖点是超高的开发效率，其性能扩展有限；采用Django的项目，在流量达到一定规模后，都需要对其进行重构，才能满足性能的要求。</p>
+<p>Django适用的是中小型的网站，或者是作为大型网站快速实现产品雏形的工具。</p>
+<p>Django模板的设计哲学是彻底的将代码、样式分离； Django从根本上杜绝在模板中进行编码、处理数据的可能。</p>
+<h2 id="django-2">Django重定向你是如何实现的？用的什么状态码？</h2>
+<p>使用HttpResponseRedirect</p>
+<p>redirect和reverse</p>
+<p>状态码：302,301</p>
+<h2 id="django--runserver">Django 本身提供了 runserver，为什么不能用来部署？</h2>
+<p>runserver 方法是调试 Django 时经常用到的运行方式，它使用 Django 自带的</p>
+<p>WSGI Server 运行，主要在测试和开发中使用，并且 runserver 开启的方式也是单进程 。</p>
+<p>python 单例模式的实现方法class SingleCase(object):
+_instance = None</p>
+<pre><code>def __new__(cls, *args, **kwargs):
+    if cls._instance is None:
+        cls._instance = super().__new__(cls, *args, **kwargs)
+    return cls._instance
+</code></pre>
+<p>if <strong>name</strong> == &lsquo;<strong>main</strong>':
+a = SingleCase()
+b = SingleCase()</p>
+<h1 id="heading-22">注释</h1>
+<h2 id="heading-23">动态分配</h2>
+<p>内存分配有静态分配和动态分配两种。</p>
+<p>静态分配在程序编译链接时分配的大小和使用寿命就已经确定，而应用上要求操作系统可以提供给进程运行时申请和释放任意大小内存的功能，这就是内存的动态分配。</p>
+<p>动态分配将不可避免会产生内存碎片的问题。内存碎片即“碎片的内存”描述一个系统中所有不可用的空闲内存，这些碎片之所以不能被使用，是因为负责动态分配内存的分配算法使得这些空闲的内存无法使用，这一问题的发生，原因在于这些空闲内存以小且不连续方式出现在不同的位置。因此这个问题的或大或小取决于内存管理算法的实现上。</p>
+<p>空闲内存碎片存在的方式有两种：a.内部碎片 b.外部碎片 。</p>
+<p>内部碎片的产生：因为所有的内存分配必须起始于可被 4、8 或 16 整除（视处理器体系结构而定）的地址或者因为MMU的分页机制的限制，决定内存分配算法仅能把预定大小的内存块分配给客户。假设当某个客户请求一个 43 字节的内存块时，因为没有适合大小的内存，所以它可能会获得 44字节、48字节等稍大一点的字节，因此由所需大小四舍五入而产生的多余空间就叫内部碎片。</p>
+<p>外部碎片的产生： 频繁的分配与回收物理页面会导致大量的、连续且小的页面块夹杂在已分配的页面中间，就会产生外部碎片。假设有一块一共有100个单位的连续空闲内存空间，范围是0~99。如果你从中申请一块内存，如10个单位，那么申请出来的内存块就为0~9区间。这时候你继续申请一块内存，比如说5个单位大，第二块得到的内存块就应该为10~14区间。如果你把第一块内存块释放，然后再申请一块大于10个单位的内存块，比如说20个单位。因为刚被释放的内存块不能满足新的请求，所以只能从15开始分配出20个单位的内存块。现在整个内存空间的状态是0~9空闲，10~14被占用，15~34被占用，25~99空闲。其中0~9就是一个内存碎片了。如果10~14一直被占用，而以后申请的空间都大于10个单位，那么0~9就永远用不上了，变成外部碎片。</p>
+<h1 id="session">针对负载均衡集群中的session解决方案的总结</h1>
+<h2 id="heading-24">问题</h2>
+<p>就是当一个用户第一次访问被负载均衡代理到后端服务器A并登录后，服务器A上保留了用户的登录信息；当用户再次发送请求时，根据负载均衡策略可能被代理到后端不同的服务器，例如服务器B，由于这台服务器B没有用户的登录信息，所以导致用户需要<strong>重新登录</strong>。</p>
+<h2 id="heading-25">方法</h2>
+<ul>
+<li>会话保持</li>
+<li>会话复制</li>
+<li>会话共享</li>
+</ul>
+<h2 id="session-1">Session会话保持</h2>
+<p>所有负载均衡都有实现</p>
+<p>利用url_hash等方法保证同一个用户访问的服务器是同一台。</p>
+<p>可以在负载均衡层就解决Seesion文件。</p>
+<p>并不是正真的负载均衡，而且服务器宕机后再去访问别的服务器还是要重新登陆。</p>
+<h2 id="session-2">Session会话复制</h2>
+<p>Tomcat支持</p>
+<p>当切换服务器时，就去之前的服务器上面拷贝session过来，不适用于大集群。
+复制也分为两种，一种是全部复制到所有其他节点，另一种是复制指定的节点。</p>
+<p>不适合大集群</p>
+<h2 id="heading-26">会话共享</h2>
+<p>因为频繁使用所以nosql数据库（redis等）而不是关系数据库</p>
+<p>但是因为在内存里，宕机就没了，session太多时，老的就被删除了。因为内存大小不容易扩展。</p>
+<h1 id="heading-27">排序</h1>
+<p>举例 sort 和 sorted 的区别demo_list = [1, 3, 4, 2, 7, 5]</p>
+<h1 id="sortedlist">sorted是一个函数，返回一个新的list</h1>
+<p>result_list = sorted(demo_list)
+print(result_list)</p>
+<h1 id="sortlistlist">sort是实例方法，直接作用在list本身，没有返回新的list</h1>
+<p>demo_list.sort()
+print(demo_list)</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
