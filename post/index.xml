@@ -48,7 +48,14 @@ closure = print_msg()closure()I&#39;m closure 装饰器 带参数的装饰器
 有序 1.
 插入 超链接 [链接名称](链接地址)
 图片 &amp;lt;img src=&amp;quot;图片地址&amp;rdquo; width=&amp;quot;300&amp;rdquo; hegiht=&amp;quot;400&amp;rdquo; align=center /&amp;gt;
-表格 #空格
+表格 列名1 | 列名2
+&amp;mdash; | &amp;mdash;
+值1 | 值2
+值3 | 值4
+第二行的&amp;mdash;(这里是三个减号)可以附加控制语句
+左边加冒号是左对齐，右边加冒号是右对齐，都加是居中。
+**注意：**MarkdownPad2的免费版本不支持表格语法，升级后才可以。点击查看升级教程
+#空格
 &amp;amp;ensp 一个空格大小
 &amp;amp;emsp 两个空格大小
 &amp;amp;nbsp 不换行空格
